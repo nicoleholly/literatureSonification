@@ -17,11 +17,10 @@ fs.readFile('books/alice_scrubbed', 'utf-8', (err, data) => {
 	if (err) throw err;
 	textArray = data.split('.');
 
-
 for (i =0; i < textArray.length; i++) {
-	var blah = ''
+	var blah = '';
 	score[i] = sentiment(textArray[i]).score;
-	if (score[i] % 7 == 0) {
+	if (score[i] % 7 === 0) {
 		blah += 'c';
 	} else if (score[i] % 7 == 1 || score[i] % 7 == -1) {
 		blah += 'd';
@@ -34,7 +33,7 @@ for (i =0; i < textArray.length; i++) {
 	} else if (score[i] % 7 == 5 || score[i] % 7 == -5) {
 		blah += 'a';
 	} else if (score[i] % 7 == 6 || score[i] % 7 == -6) {
-		blah += 'b'
+		blah += 'b';
 	} else {
 		console.log('wut');
 	}
@@ -72,7 +71,7 @@ console.log(music);
 
 for (var j = 0; j < music.length; j++ ) {
 	track.addNote(0, music[j], 64);
-};
+}
 
 fs.writeFileSync('test.mid', file.toBytes(), 'binary');
 
