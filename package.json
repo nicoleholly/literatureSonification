@@ -4,7 +4,7 @@
   "description": "Sonfication of bookx",
   "main": "index.js",
   "scripts": {
-    "run": "node sentiment.js",
+    "run": "node sentiment.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/nicoleholly/literatureSonification#readme",
   "bin": {
-    "literatureSonification": "index.js"
+    "literatureSonification": "index.js`"
   },
   "dependencies": {
     "fs": "0.0.2",

@@ -8,7 +8,7 @@ def main():
     countRecords = 0
 
     for line in s:
-        currentLine = line.rstrip("\n")
+        currentLine = line.rstrip("\n").replace('"', "'")
         t.write(currentLine + ' ')
         countRecords += 1               
 
