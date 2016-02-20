@@ -13,15 +13,15 @@ var score = [];
 var music = []; 
 //var text = "I am a sick man. I am a spiteful man. I am an unattractive man."
 
-var text = "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'"
+var text = "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'";
 var textArray = text.split(',');
 console.log(textArray);
 
 
 for (i =0; i < textArray.length; i++) {
-	var blah = ''
+	var blah = '';
 	score[i] = sentiment(textArray[i]).score;
-	if (score[i] % 7 == 0) {
+	if (score[i] % 7 === 0) {
 		blah += 'c';
 	} else if (score[i] % 7 == 1 || score[i] % 7 == -1) {
 		blah += 'd';
@@ -34,7 +34,7 @@ for (i =0; i < textArray.length; i++) {
 	} else if (score[i] % 7 == 5 || score[i] % 7 == -5) {
 		blah += 'a';
 	} else if (score[i] % 7 == 6 || score[i] % 7 == -6) {
-		blah += 'b'
+		blah += 'b';
 	} else {
 		console.log('wut');
 	}
@@ -72,7 +72,7 @@ console.log(music);
 
 for (var j = 0; j < music.length; j++ ) {
 	track.addNote(0, music[j], 64);
-};
+}
 
 fs.writeFileSync('test.mid', file.toBytes(), 'binary');
 
