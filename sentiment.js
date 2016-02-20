@@ -19,6 +19,12 @@ fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
 
 for (i =0; i < textArray.length; i++) {
 	var blah = '';
+	var blah2 = '';
+	var blah3 = ''
+	//console.log(sentiment(textArray[i]))
+
+	score[i] = sentiment(textArray[i]).score;
+
 
 	if (score[i] % 7 === 0) {
 		blah += 'c';
@@ -39,35 +45,61 @@ for (i =0; i < textArray.length; i++) {
 	}
 
 	if (score[i] < -5) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < -4) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < -3) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < -2) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < -1) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < 0) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < 1) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < 2) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < 3) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else if (score[i] < 4) {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	} else {
-		blah += 5;
+		blah2 = blah  + 4;
+		blah3 = blah + 6;
+		blah += 2;
 	}
 
-	music.push(blah);
+	chord = [blah, blah2, blah3]
+
+	music.push(chord);
 }
 
 
 for (var j = 0; j < music.length; j++ ) {
-	track.addNote(0, music[j], 64);
+	track.note(0, music[j][0], 64);
+	track.noteOn(0, music[j][1]);
+	track.noteOn(0, music[j][2]);
 }
 
 fs.writeFileSync('test.mid', file.toBytes(), 'binary');
