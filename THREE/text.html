@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<title>3D LOGOOO!!!</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+
+	
+		<script src="three.js"></script>
+		<script src="textGeometry.js"></script>
+		<script src="fontUtils.js"></script>
+		<script src="http://mrdoob.github.com/three.js/examples/fonts/optimer_regular.typeface.js"></script>
+		<script src="http://mrdoob.github.com/three.js/examples/fonts/optimer_bold.typeface.js"></script>
+
+		<script>
+			// This is where stuff in our game will happen:
+		var screenW = window.innerWidth/2;
+		var screenH = window.innerHeight/2;
+		var spdx = 0,
+		  spdy = 0;
+		
+		mouseX = 0, mouseY = 0, mouseDown = false;
+		document.addEventListener('mousemove', function(event) {
+
+		  mouseX = event.clientX;
+		  mouseY = event.clientY;
+		}, false);
+		document.body.addEventListener("mousedown", function(event) {
+		  mouseDown = true
+		}, false);
+		document.body.addEventListener("mouseup", function(event) {
+		  mouseDown = false
+		}, false);
+		var scene = new THREE.Scene();
+
+		// This is what sees the stuff:
+		var camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 2000);
+		camera.position.set (350, 0, 1000);
+
+		// This will draw what the camera sees onto the screen:
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth/4, window.innerHeight/4);
+		document.body.appendChild(renderer.domElement);
+			
+
+
+		var textGeom = new THREE.TextGeometry("196 orchard", 
+		     {
+		      	font: 'optimer',
+			    weight: 'bold',
+			    size:200
+		     });
+		var material2 = new THREE.MeshNormalMaterial();
+		var textMesh = new THREE.Mesh( textGeom, material2 );
+		console.log(textMesh.position.y);
+		textGeom.computeBoundingBox();
+		var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+
+		textMesh.position.set( -0.5 * textWidth, 0, 60 );//left-rt/high/far
+		scene.add( textMesh );
+		pivot = new THREE.Object3D();
+		pivot.add( textMesh );
+		scene.add( pivot );
+
+
+		// Now, show what the camera sees on the screen:
+		renderer.render(scene, camera);
+
+		function animate() {
+		  spdy = (screenH / 50 + mouseY) / 2000;
+		  spdx = (screenW / 50 + mouseX) / 1000;
+		
+		  // rotate on mousedown
+		  if (mouseDown) {
+		   // textMesh.rotation.x = spdy;
+		   	 pivot.rotation.x = spdy;
+		     pivot.rotation.y = spdx;
+		  }
+		  requestAnimationFrame(animate);
+
+		  render();
+
+		}
+
+		function render() {
+		  // render
+		  renderer.render(scene, camera);
+
+		}		
+		animate();
+
+		</script>
+	</body>
+</html>
