@@ -4,7 +4,8 @@
   "description": "Sonfication of bookx",
   "main": "index.js",
   "scripts": {
-    "run": "node sentiment.js"
+    "run": "node sentiment.js",
+    "audio": "node audio.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,8 @@
     "literatureSonification": "index.js"
   },
   "dependencies": {
-    "baudio": "^2.1.2",
-    "data-piano": "^0.3.0",
+    "fs": "0.0.2",
+    "jsmidgen": "^0.1.4",
     "sentiment": "^1.0.6",
     "syllable": "^0.1.4"
   }
