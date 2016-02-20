@@ -1,6 +1,6 @@
 def main():
-    source_file = "books/alice.txt"
-    target_file = "books/alice_scrubbed"
+    source_file = "books/notes-from-underground.txt"
+    target_file = "books/notes_scrubbed"
 
     s = open(source_file, 'r')
     t = open(target_file, 'w')
