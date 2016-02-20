@@ -17,7 +17,7 @@ fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
 	if (err) throw err;
 	textArray = data.split('.');
 
-for (i =0; i < textArray.length; i++) {
+for (i =0; i < 20; i++) {
 	var blah = '';
 	var blah2 = '';
 	var blah3 = ''
@@ -97,6 +97,7 @@ for (i =0; i < textArray.length; i++) {
 
 
 for (var j = 0; j < music.length; j++ ) {
+	track.instrument(0, 0x13);
 	track.note(0, music[j][0], 64);
 	track.noteOn(0, music[j][1]);
 	track.noteOn(0, music[j][2]);
