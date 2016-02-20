@@ -9,7 +9,7 @@ def main():
 
     for line in s:
         currentLine = line.rstrip("\n")
-        t.write(currentLine)
+        t.write(currentLine + ' ')
         countRecords += 1               
 
     s.close()
