@@ -4,10 +4,7 @@
   "description": "Sonfication of bookx",
   "main": "index.js",
   "scripts": {
-    "test": "node lib/test.js",
-    "run": "node lib/main.js",
-    "build": "babel src -d lib",
-    "watch": "babel src -d lib --watch"
+    "run": "node sentiment.js"
   },
   "repository": {
     "type": "git",
@@ -21,42 +18,6 @@
   "homepage": "https://github.com/nicoleholly/literatureSonification#readme",
   "bin": {
     "literatureSonification": "index.js"
-  },
-  "devDependencies": {
-    "eslint": "^1.10.3",
-    "eslint-config-google": "^0.3.0",
-    "jquery-deferred": "^0.3.0",
-    "phonemenon": "^1.3.0",
-    "syllable": "^0.1.4"
-  },
-  "eslintConfig": {
-    "parser": "eslint",
-    "extends": "google",
-    "ecmaFeatures": {
-      "module": true
-    },
-    "env": {
-      "node": true
-    },
-    "rules": {
-      "require-jsdoc": 0,
-      "no-multi-spaces": 0,
-      "new-cap": 0,
-      "padded-blocks": 0,
-      "quotes": 0,
-      "max-len": 0,
-      "comma-dangle": 0,
-      "no-unused-expressions": [
-        0,
-        {
-          "allowShortCircuit": true
-        }
-      ],
-      "no-alert": 0,
-      "consistent-return": 1,
-      "curly": 1,
-      "camelcase": 0
-    }
   },
   "dependencies": {
     "data-piano": "^0.3.0",
