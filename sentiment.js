@@ -5,13 +5,18 @@ var baudio = require('baudio');
 
 
 var score = [];
+<<<<<<< HEAD
 var text = "I love feelings really happy. I hate sad things."
 var textArray = text.split('.');
+=======
+var text = "I love feelings really happy. I hate sad things.";
+textArray = text.split('.');
+>>>>>>> 565a2da99dcc1351ca794893f00a421f91d32ee2
 
 console.log(textArray);
 
 for (i =0; i < textArray.length; i++) {
-	score[i] = sentiment(textArray[i]).score; 
+	score[i] = sentiment(textArray[i]).score;
 }
 
 console.log(score);
