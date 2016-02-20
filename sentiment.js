@@ -6,7 +6,7 @@ var baudio = require('baudio');
 
 var score = [];
 var text = "I love feelings really happy. I hate sad things."
-textArray = text.split('.');
+var textArray = text.split('.');
 
 console.log(textArray);
 
@@ -25,7 +25,7 @@ var piano = new datap({
 	lowVelocity: 42,
 	highVelocity: 80,
 	stopVelocity: 80
-})
+});
 
 var playFunc = piano.getSinPlayFunc(2);
 var b = baudio(playFunc);
