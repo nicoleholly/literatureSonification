@@ -2,6 +2,7 @@ var sentiment = require('sentiment');
 var fs = require('fs');
 var midiFile = require('jsmidgen');
 var alchemyAPI = require('alchemy-api');
+console.log(alchemyAPI);
 var alchemy = new AlchemyAPI('c3c38a35951890872f9d5670ba6668cd368b3d7c'); 
 
 var file = new midiFile.File();
@@ -13,12 +14,14 @@ var music = [];
 var text;
 var textArray;
 
+test = 'hi';
+
 alchemy.sentiment('Alice was beginning to get very tired of sitting by her sister', {}, function(err, response) {
-  if (err) throw err;
+	if (err) throw err;
 
   // See http://www.alchemyapi.com/api/ for format of returned object
   var sentiment = response.docSentiment;
-	console.log(sentiment);
+  console.log(sentiment);
   // Do something with data
 });
 
@@ -28,10 +31,10 @@ fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
 	if (err) throw err;
 	textArray = data.split('.');
 
-for (i =0; i < 20; i++) {
-	var blah = '';
-	var blah2 = '';
-	var blah3 = '';
+	for (i =0; i < 20; i++) {
+		var blah = '';
+		var blah2 = '';
+		var blah3 = '';
 	//console.log(sentiment(textArray[i]))
 
 	score[i] = sentiment(textArray[i]).score;
