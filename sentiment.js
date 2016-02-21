@@ -112,7 +112,6 @@ fs.readFile('books/alice_scrubbed', 'utf-8', (err, data) => {
 
 
 for (var j = 0; j < music.length; j++ ) {
-	track.instrument(0, 0x13);
 	track.note(0, music[j][0], 64);
 	track.noteOn(0, music[j][1]);
 	track.noteOn(0, music[j][2]);
