@@ -1,6 +1,8 @@
 var sentiment = require('sentiment');
 var fs = require('fs');
 var midiFile = require('jsmidgen');
+var alchemyAPI = require('alchemy-api');
+var alchemy = new AlchemyAPI('c3c38a35951890872f9d5670ba6668cd368b3d7c'); 
 
 var file = new midiFile.File();
 var track = new midiFile.Track();
@@ -11,6 +13,15 @@ var music = [];
 var text;
 var textArray;
 
+alchemy.sentiment('Alice was beginning to get very tired of sitting by her sister', {}, function(err, response) {
+  if (err) throw err;
+
+  // See http://www.alchemyapi.com/api/ for format of returned object
+  var sentiment = response.docSentiment;
+	console.log(sentiment);
+  // Do something with data
+});
+
 //var text = "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'"
 
 fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
@@ -20,7 +31,7 @@ fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
 for (i =0; i < 20; i++) {
 	var blah = '';
 	var blah2 = '';
-	var blah3 = ''
+	var blah3 = '';
 	//console.log(sentiment(textArray[i]))
 
 	score[i] = sentiment(textArray[i]).score;
@@ -90,7 +101,7 @@ for (i =0; i < 20; i++) {
 		blah += 2;
 	}
 
-	chord = [blah, blah2, blah3]
+	chord = [blah, blah2, blah3];
 
 	music.push(chord);
 }
