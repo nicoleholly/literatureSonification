@@ -1,37 +1,27 @@
 var sentiment = require('sentiment');
 var fs = require('fs');
 var midiFile = require('jsmidgen');
-//var alchemyAPI = require('alchemy-api');
-//console.log(alchemyAPI);
-//var alchemy = new AlchemyAPI('c3c38a35951890872f9d5670ba6668cd368b3d7c'); 
-
+var AlchemyAPI = require('alchemy-api');
+var alchemy = new AlchemyAPI('c3c38a35951890872f9d5670ba6668cd368b3d7c');
 var file = new midiFile.File();
 var track = new midiFile.Track();
+
 file.addTrack(track);
 
 var score = [];
 var music = []; 
+var alchemyScore = [];
+
 var text;
 var textArray;
 
-test = 'hi';
-/*
-alchemy.sentiment('Alice was beginning to get very tired of sitting by her sister', {}, function(err, response) {
-	if (err) throw err;
-
-  // See http://www.alchemyapi.com/api/ for format of returned object
-  var sentiment = response.docSentiment;
-  console.log(sentiment);
-  // Do something with data
-});
-*/
 //var text = "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'"
 
-fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
+fs.readFile('books/alice_scrubbed', 'utf-8', (err, data) => {
 	if (err) throw err;
 	textArray = data.split('.');
 
-	for (i =0; i < 20; i++) {
+	for (i =0; i < 3; i++) {
 		var blah = '';
 		var blah2 = '';
 		var blah3 = '';
@@ -39,6 +29,17 @@ fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
 
 	score[i] = sentiment(textArray[i]).score;
 
+
+	alchemy.sentiment(textArray[i], {}, function(err, response) {
+		if (err) throw err;
+
+	  // See http://www.alchemyapi.com/api/ for format of returned object
+	  alchemySentiment = response.docSentiment;
+	  console.log(JSON.stringify(alchemySentiment));
+	  // Do something with data
+	  alchemyScore.push( JSON.stringify(alchemySentiment));
+
+	})
 
 	if (score[i] % 7 === 0) {
 		blah += 'c';
@@ -121,3 +122,11 @@ fs.writeFileSync('test.mid', file.toBytes(), 'binary');
 
 });
 
+setTimeout(writeFile,3000);
+
+function writeFile(){
+	fs.writeFile('alice-test.json', alchemyScore, (err) => {
+		console.log('write file function');
+		if (err) throw err;
+	});
+}
