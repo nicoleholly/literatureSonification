@@ -38,14 +38,9 @@ for (i =0; i < 3; i++) {
 	  alchemySentiment = response.docSentiment;
 	  console.log(JSON.stringify(alchemySentiment));
 	  // Do something with data
-	  alchemyScore.push(JSON.stringify(alchemySentiment));
+	  alchemyScore.push( JSON.stringify(alchemySentiment));
 
-	  setTimeout(writeFile,3000);
 	})
-
-
-
-
 
 	if (score[i] % 7 === 0) {
 		blah += 'c';
@@ -127,10 +122,12 @@ for (var j = 0; j < music.length; j++ ) {
 fs.writeFileSync('test.mid', file.toBytes(), 'binary');
 
 });
+
+setTimeout(writeFile,3000);
+
 function writeFile(){
-	fs.writeFile('alice-test.txt', alchemyScore, (err) => {
+	fs.writeFile('alice-test.json', alchemyScore, (err) => {
 		console.log('write file function');
 	  if (err) throw err;
 	});
 }
-
