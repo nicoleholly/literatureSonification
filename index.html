@@ -15,19 +15,20 @@
     <a href="#" onClick="MIDIjs.play('test.mid');">Play Book</a>     
     <a href="#" onClick="MIDIjs.stop();">Stop</a>
 
-    <script src="three.js"></script>
-    <script src="textGeometry.js"></script>
-    <script src="fontUtils.js"></script>
+    <script src="THREE/three.js"></script>
+    <script src="THREE/textGeometry.js"></script>
+    <script src="THREE/fontUtils.js"></script>
     <script src="http://mrdoob.github.com/three.js/examples/fonts/optimer_regular.typeface.js"></script>
     <script src="http://mrdoob.github.com/three.js/examples/fonts/optimer_bold.typeface.js"></script>
 
     <script>
+
             // This is where stuff in our game will happen:
             var screenW = window.innerWidth/2;
             var screenH = window.innerHeight/2;
             var spdx = 0,
             spdy = 0;
-            
+
             mouseX = 0, mouseY = 0, mouseDown = false;
             document.addEventListener('mousemove', function(event) {
 
@@ -50,15 +51,19 @@
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
-        
-        console.log(test);
 
-        var textGeom = new THREE.TextGeometry("196 orchard", 
-        {
-            font: 'optimer',
-            weight: 'bold',
-            size:200
-        });
+        var txt = "CHAPTER I. Down the Rabbit-Hole  Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'  So she was considering in her own mind (as "
+
+
+        console.log(txt);
+
+        var textGeom = new THREE.TextGeometry(txt, {
+                font: 'optimer',
+                weight: 'bold',
+                size:200
+            });
+
+
         var material2 = new THREE.MeshNormalMaterial();
         var textMesh = new THREE.Mesh( textGeom, material2 );
         console.log(textMesh.position.y);
@@ -78,7 +83,7 @@
         function animate() {
           spdy = (screenH / 50 + mouseY) / 2000;
           spdx = (screenW / 50 + mouseX) / 1000;
-          
+
           // rotate on mousedown
           if (mouseDown) {
            // textMesh.rotation.x = spdy;

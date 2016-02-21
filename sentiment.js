@@ -1,9 +1,9 @@
 var sentiment = require('sentiment');
 var fs = require('fs');
 var midiFile = require('jsmidgen');
-var alchemyAPI = require('alchemy-api');
-console.log(alchemyAPI);
-var alchemy = new AlchemyAPI('c3c38a35951890872f9d5670ba6668cd368b3d7c'); 
+//var alchemyAPI = require('alchemy-api');
+//console.log(alchemyAPI);
+//var alchemy = new AlchemyAPI('c3c38a35951890872f9d5670ba6668cd368b3d7c'); 
 
 var file = new midiFile.File();
 var track = new midiFile.Track();
@@ -15,7 +15,7 @@ var text;
 var textArray;
 
 test = 'hi';
-
+/*
 alchemy.sentiment('Alice was beginning to get very tired of sitting by her sister', {}, function(err, response) {
 	if (err) throw err;
 
@@ -24,7 +24,7 @@ alchemy.sentiment('Alice was beginning to get very tired of sitting by her siste
   console.log(sentiment);
   // Do something with data
 });
-
+*/
 //var text = "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'"
 
 fs.readFile('books/notes_scrubbed', 'utf-8', (err, data) => {
